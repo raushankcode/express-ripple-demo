@@ -1,9 +1,9 @@
 {
   "protocol": "ripple-change-intent",
   "version": 1,
-  "id": "intent-mr2takx8-def3c5f1bb",
-  "createdAt": "2026-07-02T01:14:28.074Z",
-  "task": "Add pure comment",
+  "id": "intent-mr2tjag9-b5d1ee5fa3",
+  "createdAt": "2026-07-02T01:21:14.408Z",
+  "task": "Update utility types",
   "targetFile": "lib/utils.js",
   "risk": "safe",
   "tokenBudget": 4000,
