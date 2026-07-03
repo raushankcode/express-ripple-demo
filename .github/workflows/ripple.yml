@@ -1,15 +1,18 @@
-name: Ripple
+name: Ripple Enterprise Gate
 
 on:
   pull_request:
+  push:
+    branches: [main, master]
 
 permissions:
   contents: read
   pull-requests: read
+  checks: write
 
 jobs:
   ripple:
-    name: Ripple architecture gate
+    name: Ripple authorization gate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,6 +23,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Ripple CI
-        run: npx -y @getripple/cli@1.0.9 ci --base origin/${{ github.base_ref }} --github-annotations
-      --intent latest
+      - name: Ripple CI gate
+        run: npx -y @getripple/cli@latest ci --base origin/${{ github.base_ref || 'main' }} --github-annotations --sha ${{ github.event.pull_request.head.sha || github.sha }}
+        env:
+          RIPPLE_API_KEY: ${{ secrets.RIPPLE_API_KEY }}
+          RIPPLE_CLOUD_URL: ${{ secrets.RIPPLE_CLOUD_URL }}
