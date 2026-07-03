@@ -22,3 +22,4 @@ jobs:
           node-version: 20
       - name: Ripple CI
         run: npx -y @getripple/cli@1.0.9 ci --base origin/${{ github.base_ref }} --github-annotations
+      --intent latest
